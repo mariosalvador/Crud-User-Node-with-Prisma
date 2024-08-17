@@ -4,6 +4,7 @@ import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod
 import { CreateUser } from "./createUser";
 import { GetUser } from "./getUser";
 import { PutUser } from "./putUser";
+import { GetUniqueUser } from "./getUniqueUser";
 
 
 require('dotenv').config();
@@ -20,6 +21,7 @@ app.register(cors,{
 
 app.register(CreateUser)
 app.register(GetUser)
+app.register(GetUniqueUser)
 app.register(PutUser)
 
 
