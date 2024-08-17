@@ -5,6 +5,7 @@ import { CreateUser } from "./createUser";
 import { GetUser } from "./getUser";
 import { PutUser } from "./putUser";
 import { GetUniqueUser } from "./getUniqueUser";
+import { DeleteUser } from "./deleteUser";
 
 
 require('dotenv').config();
@@ -23,6 +24,7 @@ app.register(CreateUser)
 app.register(GetUser)
 app.register(GetUniqueUser)
 app.register(PutUser)
+app.register(DeleteUser)
 
 
 app.listen({port:Number(port)}).then(()=>{
