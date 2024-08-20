@@ -13,20 +13,19 @@ export const PutUser = async(app: FastifyInstance)=>{
             body: z.object({
                 name:z.string().min(3),
                 email:z.string().email('Invalid email!'),
-                born: z.coerce.date()
+                born: z.coerce.date(),
+                password: z.string().min(8)
             })
         }
     }, async(request)=>{
         const {userId} = request.params;
-        const {name,email,born} = request.body
+        const {name,email,born,password} = request.body
 
         const findUser = await prisma.user.findUnique({
             where:{ id:userId}
         })
 
         if(!findUser) return new Error('User Not Found!!!');
-
-
 
         const putUser= await prisma.user.update({
             where:{
@@ -35,10 +34,10 @@ export const PutUser = async(app: FastifyInstance)=>{
             data:{
                 name:name,
                 email:email,
-                born:born
+                born:born,
+                password:password
             }
         })
-
         return{userId:userId}
     })
 }

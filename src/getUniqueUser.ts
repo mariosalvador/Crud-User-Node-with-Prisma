@@ -17,20 +17,19 @@ export const GetUniqueUser = async(app: FastifyInstance)=>{
             const findUser = await prisma.user.findUnique({
                 where:{id:userId},
             })
-
             if(!findUser) return new Error('User Not Found!!!');
 
             const getUser = await prisma.user.findUnique({
                 select:{
                     name:true,
                     born:true,
-                    email:true
+                    email:true,
+                    password:true
                 },
                 where:{
                     id:userId
                 },
             })
-
             return{user:getUser}
     })
 }

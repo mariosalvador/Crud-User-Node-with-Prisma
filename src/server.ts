@@ -26,7 +26,6 @@ app.register(GetUniqueUser)
 app.register(PutUser)
 app.register(DeleteUser)
 
-
 app.listen({port:Number(port)}).then(()=>{
     console.log(`Servidor Rodando...`);
 })
